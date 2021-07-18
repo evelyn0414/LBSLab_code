@@ -1,19 +1,21 @@
 This is the MATLAB source code for some data analysis of our **LBSLab dataset**. The dataset is open for downloads.
 
 ### User demographic
-
-<img src="figures/gender.pdf" alt="gender" width="350" /><img src="figures/grade.pdf" alt="grade" width="350" />
-
+<div align=center>
+<img src="figures/gender.png" alt="gender" width="350" /><img src="figures/grade.png" alt="grade" width="350" />
+</div>
 
 ### Temporal patterns
-
-<img src="figures/11days.pdf" alt="11days" width="250"  /><img src="figures/weekdays.pdf" alt="weekdays" width="250"  /><img src="figures/weather.pdf" alt="weather" width="250"  />
+<div align=center>
+<img src="figures/11days.png" alt="11days" width="250"  /><img src="figures/weekdays.png" alt="weekdays" width="250"  /><img src="figures/weather.png" alt="weather" width="250"  />
+</div>
 
 ### Mood trend
-
-<img src="figures/mood.pdf" alt="mood" width="700"  />
+<div align=center>
+<img src="figures/mood.png" alt="mood" width="700"  />
+</div>
 
 ### POI distribution
-
-<img src="figures/poi.pdf" alt="poi" width="320" /><img src="figures/category.pdf" alt="category" width="480" />
-
+<div align=center>
+<img src="figures/poi.png" alt="poi" width="320" /><img src="figures/category.png" alt="category" width="480" />
+</div>
