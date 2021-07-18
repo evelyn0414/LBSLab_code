@@ -1,0 +1,149 @@
+% data across 11 days
+b = bar([1: 11], num_checkin)
+% set(gca,'yscale','log')
+axis([0.35,11.55,0,2200])
+box off
+b.BarWidth = 0.8
+b.LineStyle = 'none'
+set(gca, 'FontSize', 14)
+xlabel('Index of day', 'FontSize', 16)
+ylabel('Number of check-ins per day', 'FontSize', 16)
+% title("Number of check-ins")
+b.FaceColor = [95 137 148]/255
+
+% weekday vs weekends
+data = [checkin_perday_weekdays', checkin_perday_weekends']
+data = [data; data(1,:)]
+B1 = bar((0:24), data, 'BarWidth', 1, 'LineStyle', 'none')
+b1 = B1(1)
+b1.FaceColor = [95 69 49]/255
+b2 = B1(2)
+b2.FaceColor = [236,186,135]/255
+axis([0 25 0 220])
+set(gca,'xtick',[0:6:23])
+grid on
+lg = legend('Weekdays', 'Weekends', 'Location', 'northoutside', 'FontSize', 16, 'Orientation', 'Horizontal', 'Box', 'off')
+xlabel('Time of day', 'FontSize', 16)
+ylabel('Average number of check-ins', 'FontSize', 16)
+set(gca, 'GridLineStyle',':')
+
+% weather across 24 hours
+b = bar([0: 23], num_weather_hour)
+% set(gca,'yscale','log')
+axis([-0.55,23.55,0,40])
+box off
+b.BarWidth = 0.98
+b.LineStyle = 'none'
+set(gca, 'FontSize', 14)
+xlabel('Time of day', 'FontSize', 16)
+ylabel('Average number of weather checking actions', 'FontSize', 16)
+b.FaceColor = [21,76,121]/255
+
+% category count
+set(gcf,'unit', 'centimeters','position',[10 5 32 16])
+b = bar(cates)
+box off
+axis([0.25,11.75,100,10000])
+b.LineStyle = 'none'
+set(gca, 'FontSize', 14)
+set(gca,'yscale','log')
+set(gca, 'XTickLabel',cate_labels)
+set(gca,'XTickLabelRotation', 45)
+xlabel('Category', 'FontSize', 16)
+ylabel('Check-ins received', 'FontSize', 16)
+b.FaceColor = [7,128,207]/255
+
+% mood change trend
+set(gcf,'unit', 'centimeters','position',[10 5 36 12])
+plot((0:24), ordinary, '-o', 'LineWidth', 1)
+hold on
+plot((0:24), happy, '-p', 'LineWidth', 1)
+hold on
+plot((0:24), sad, '-s', 'LineWidth', 1)
+hold on
+plot((0:24), fearful, '-*', 'LineWidth', 1)
+hold on
+plot((0:24), angry, '-+', 'LineWidth', 1)
+legend('Neutral','Happy',  'Sad', 'Fearful', 'Angry', 'Location', 'northoutside', 'Orientation', 'horizontal', 'Box', 'off')
+grid on
+set(gca, 'GridLineStyle',':')
+axis([0 24 0 0.6])
+set(gca,'xtick',[0:6:23])
+set(gca,'ytick',[0:0.1:0.6])
+set(gca, 'FontSize', 14)
+xlabel('Hour of Day', 'FontSize', 16)
+ylabel('Ratio', 'FontSize', 16)
+hold off
+
+% gender distribution
+set(gcf,'unit', 'centimeters','position',[10 5 18 12])
+explode = [1 0]
+p = pie(gender, explode)
+p1 = p(1)
+p1.FaceColor = [237,168,98] / 255
+p1.LineStyle = 'none'
+t1 = p(2)
+t1.FontSize = 12
+p2 = p(3)
+p2.FaceColor = [252,235,187] / 255
+p2.LineStyle = 'none'
+t2 = p(4)
+t2.FontSize = 12
+title('Gender Distribution')
+set(gca,'FontSize', 16)
+legend('Female', 'Male', 'Location', 'southeastoutside', 'box', 'off')
+
+% grade distribution
+explode = [0 0 0 0 0]
+p = pie(grade, explode)
+p1 = p(1)
+p1.FaceColor = [30 129 176] / 255
+p1.LineStyle = 'none'
+t1 = p(2)
+t1.FontSize = 12
+p2 = p(3)
+p2.FaceColor = [252,244,212] / 255
+p2.LineStyle = 'none'
+t2 = p(4)
+t2.FontSize = 12
+p3 = p(5)
+p3.FaceColor = [226 135 67] / 255
+p3.LineStyle = 'none'
+t3 = p(6)
+t3.FontSize = 12
+p4 = p(7)
+p4.FaceColor = [234 182 118] / 255
+p4.LineStyle = 'none'
+t4 = p(8)
+t4.FontSize = 12
+p5 = p(9)
+p5.FaceColor = [118 181 197] / 255
+p5.LineStyle = 'none'
+t5 = p(10)
+t5.FontSize = 12
+title('Grade Distribution')
+set(gca,'FontSize', 16)
+legend('Freshmen', 'Sophomore', 'Junior', 'Senior', 'Graduate Students','Location','southeastoutside', 'box', 'off')
+
+% poi distribution
+b = bar([1: 30], num_poi)
+set(gca,'yscale','log')
+axis([-0.55,30.55,0,2000])
+box off
+b.BarWidth = 0.98
+b.LineStyle = 'none'
+set(gca, 'FontSize', 14)
+xlabel('Number of check-ins received', 'FontSize', 16)
+ylabel('Number of POIs', 'FontSize', 16)
+b.FaceColor = [144,165,150]/255
+axes('position',[0.5,0.51,0.38,0.38])
+subp = plot([0:200], num_poi_cdf(1:201)) % max: 0:1469
+xlabel('Number of views received', 'FontSize', 16)
+ylabel('Cumulative Distribution Function', 'FontSize', 12)
+set(gca, 'FontSize', 10)
+box off
+ax2 = axes('Position',get(gca,'Position'),'XAxisLocation','top','YAxisLocation','right','Color','none','XColor','k','YColor','k');
+set(ax2,'YTick', []);
+set(ax2,'XTick', []);
+subp.LineWidth = 3
+subp.Color=[240 227 192]/255
